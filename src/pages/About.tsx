@@ -1,13 +1,16 @@
 import Navigation from "@/components/Navigation";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Download } from "lucide-react";
 
 const skills = {
-  languages: ["Python", "TypeScript", "Go", "Java", "SQL"],
-  cloud: ["AWS (EC2, S3, Lambda, ECS)", "Docker", "Kubernetes", "Terraform"],
-  backend: ["Node.js", "Django", "FastAPI", "PostgreSQL", "Redis", "Apache Kafka"],
-  frontend: ["React", "Next.js", "Tailwind CSS", "TypeScript"],
-  tools: ["Git", "CI/CD", "Prometheus", "Grafana", "Linux"]
+  languages: ["Java", "C++", "Python", "C#", "JavaScript", "TypeScript", "SQL"],
+  cloud: ["AWS (EC2, S3, Lambda, Aurora, RDS, CloudFormation, EBS, CloudWatch)", "Azure",],
+  backend: ["Spring Boot", "Node.js", "PostgreSQL", "MySQL", "MongoDB", "Redis", "Apache Kafka", "REST APIs", "Microservices"],
+  frontend: ["React", "Next.js", "TypeScript"],
+  tools: ["Git", "CI/CD", "Linux", "Monitoring & Observability", "PyTorch", "JUnit"],
+  aiMl: ["Model Training", "Data Preprocessing", "Feature Engineering"]
 };
 
 const About = () => {
@@ -21,20 +24,23 @@ const About = () => {
             <h1 className="text-4xl md:text-5xl font-bold mb-6">About Me</h1>
             <div className="prose prose-lg max-w-none">
               <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-                I'm a software engineer at AWS with a passion for building scalable, reliable systems. 
-                My experience spans distributed systems, cloud infrastructure, and full-stack development, 
-                with a focus on creating solutions that solve real-world problems at scale.
+                I'm a software engineer at AWS with a strong track record of delivering high-impact projects in cloud infrastructure, distributed systems, and full-stack development. I specialize in building scalable, reliable systems that solve real-world problems efficiently.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-                Throughout my career, I've worked on high-impact projects involving microservices architecture, 
-                data pipelines, and infrastructure automation. I believe in writing clean, maintainable code 
-                and building systems with observability and reliability in mind from day one.
+                Over my career, I have designed and optimized microservices architectures, implemented low-latency trading and data pipelines, and enhanced observability and automation across critical infrastructure. My work has reduced operational latency by up to 80%, saved hundreds of thousands of dollars monthly, and improved system reliability.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed mb-4">
+                I have a strong foundation in cloud platforms (AWS, Azure), programming languages (Java, C++, Python, TypeScript), and frameworks (React, Spring Boot). I also have hands-on experience in DevOps, CI/CD pipelines, monitoring, and AI/ML workflows.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                I'm currently seeking new opportunities where I can contribute to challenging technical problems, 
-                work with talented teams, and continue growing as an engineer. I'm particularly interested in 
-                roles involving distributed systems, cloud infrastructure, and platform engineering.
+                I am passionate about tackling challenging technical problems, contributing to high-performing teams, and building systems that scale globally. My goal is to continue driving impact through engineering excellence and innovative solutions.
               </p>
+              <Button asChild size="lg">
+                <a href="/resume.pdf" download>
+                  <Download className="mr-2 h-4 w-4" />
+                  Download Resume
+                </a>
+              </Button>
             </div>
           </div>
 
@@ -108,8 +114,7 @@ const About = () => {
                 <div>
                   <h3 className="font-semibold text-lg mb-1">Software Engineer at AWS</h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    Working on cloud infrastructure and distributed systems, building services that handle 
-                    millions of requests per day. Focus on reliability, scalability, and operational excellence.
+                    Working on cloud infrastructure and distributed systems, building services that handle millions of requests per day. Focus on reliability, scalability, and operational excellence.
                   </p>
                 </div>
                 <div>
@@ -118,19 +123,19 @@ const About = () => {
                     <li className="flex items-start">
                       <span className="text-primary mr-2">•</span>
                       <span className="text-muted-foreground">
-                        Designed and implemented microservices architecture serving millions of users
+                        Ranked top 3 in team code contributions and led projects reducing workflow latency by 80%
                       </span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-primary mr-2">•</span>
                       <span className="text-muted-foreground">
-                        Reduced infrastructure costs by 40% through optimization and automation
+                        Improved infrastructure efficiency and test automation, saving ~$400K/month
                       </span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-primary mr-2">•</span>
                       <span className="text-muted-foreground">
-                        Built monitoring and alerting systems improving system reliability to 99.9% uptime
+                        Co-led cross-team AI hackathon project and built monitoring systems achieving 99.9% uptime
                       </span>
                     </li>
                   </ul>
