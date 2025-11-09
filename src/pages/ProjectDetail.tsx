@@ -1,101 +1,110 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowLeft, Github, ExternalLink } from "lucide-react";
+import { ArrowLeft, Github, ExternalLink, Newspaper } from "lucide-react";
 import Navigation from "@/components/Navigation";
 
 // Sample detailed project data - replace with your actual project details
 const projectDetails: Record<string, any> = {
   "1": {
-    title: "Distributed Task Scheduler",
-    description: "A fault-tolerant distributed task scheduling system built with microservices architecture",
-    longDescription: "This project implements a highly scalable and fault-tolerant task scheduling system designed to handle millions of tasks across distributed worker nodes. Built with cloud-native principles, it demonstrates expertise in distributed systems, resilience patterns, and infrastructure automation.",
-    motivation: "At AWS, I frequently encountered scenarios where teams needed reliable task execution at scale. This project was born from the need to create a robust, production-ready scheduler that could handle failures gracefully while maintaining high throughput.",
+    title: "DUGET: Dynamic User Grouping & Evolution Tracking",
+    description: "Machine learning framework for tracking user clusters over time in public transit systems",
+    longDescription: `DUGET is a framework for representing, clustering, and tracking objects (users) over time, evaluating and quantifying changes in clusters. DUGET_V1 and DUGET_V2 implement this framework on public transportation data, producing robust user profiles and identifying distinct temporal patterns. This work formed my master's thesis and was published in IEEE: "DUGET: Leveraging Machine Learning for Dynamic User Grouping and Evolution Tracking in Public Transit Systems".`,
+    motivation: "During my master's program at KTH, I wanted to explore how temporal clustering could reveal patterns in public transit usage. The goal was to build a framework capable of tracking evolving user groups and quantifying changes over time, with potential applications in urban planning and transport analytics.",
     architecture: [
-      "Microservices-based architecture with independent scaling",
-      "Event-driven design using message queues for inter-service communication",
-      "Container orchestration with Kubernetes for automated deployment and scaling",
-      "PostgreSQL for persistent storage with Redis for caching"
+      "Representation of objects as temporal profiles",
+      "Clustering of users for two consecutive time periods",
+      "Matching and tracking clusters over time",
+      "Evaluation and quantification of changes in clusters"
     ],
     components: [
-      { name: "API Gateway", description: "RESTful API for task submission and monitoring" },
-      { name: "Scheduler Service", description: "Core scheduling logic with priority queues" },
-      { name: "Worker Pool", description: "Horizontally scalable task executors" },
-      { name: "Monitoring Dashboard", description: "Real-time system health and metrics" }
+      { name: "Data Preparation", description: "Preprocessing public transit datasets into temporal user profiles" },
+      { name: "Clustering Engine", description: "Clustering algorithm implementation for each time period" },
+      { name: "Evolution Tracker", description: "Tracks matching clusters and identifies changes over time" },
+      { name: "Evaluation Module", description: "Measures robustness and quality of clustering and tracking results" }
     ],
     setup: [
-      "Clone the repository: git clone https://github.com/yourusername/distributed-scheduler",
+      "Clone the repository: git clone https://github.com/Tobias-Johannesson/DUGET",
       "Install dependencies: pip install -r requirements.txt",
-      "Start local services: docker-compose up -d",
-      "Run migrations: python manage.py migrate",
-      "Start the scheduler: python scheduler.py",
-      "Access dashboard at http://localhost:8080"
+      "Run preprocessing scripts: python preprocess.py",
+      "Run clustering: python cluster_v1.py or python cluster_v2.py",
+      "Track evolution: python track_clusters.py",
+      "Evaluate results: python evaluate.py"
     ],
-    technologies: ["Python", "Docker", "Kubernetes", "PostgreSQL", "Redis", "AWS ECS", "Prometheus"],
-    githubUrl: "https://github.com/yourusername/project1",
-    demoUrl: "https://demo.example.com",
-    image: "/placeholder.svg"
-  },
-  "2": {
-    title: "Real-time Analytics Dashboard",
-    description: "High-performance analytics platform processing millions of events per second",
-    longDescription: "A comprehensive analytics platform capable of processing and visualizing streaming data in real-time. Built to handle massive scale with sub-second latency, demonstrating expertise in stream processing, data engineering, and frontend performance optimization.",
-    motivation: "Modern applications generate massive amounts of event data. I built this to showcase how to build scalable analytics infrastructure that provides actionable insights without sacrificing performance.",
-    architecture: [
-      "Event ingestion pipeline using Apache Kafka",
-      "Stream processing with Apache Flink for real-time aggregations",
-      "Time-series database (TimescaleDB) for efficient storage",
-      "React-based dashboard with WebSocket for live updates"
+    technologies: [
+      "Python",
+      "Machine Learning",
+      "Data Science",
+      "Temporal Clustering",
+      "Public Transit Analytics",
+      "NumPy",
+      "Pandas",
+      "Scikit-learn"
     ],
-    components: [
-      { name: "Event Collector", description: "High-throughput event ingestion API" },
-      { name: "Stream Processor", description: "Real-time aggregation and transformation" },
-      { name: "Query Engine", description: "Optimized analytical queries" },
-      { name: "Visualization Layer", description: "Interactive charts and dashboards" }
-    ],
-    setup: [
-      "Clone the repository: git clone https://github.com/yourusername/analytics-dashboard",
-      "Install dependencies: npm install && pip install -r requirements.txt",
-      "Start Kafka: docker-compose up kafka zookeeper",
-      "Start stream processor: python processor.py",
-      "Start web server: npm run dev",
-      "Access dashboard at http://localhost:3000"
-    ],
-    technologies: ["React", "TypeScript", "Apache Kafka", "Apache Flink", "PostgreSQL", "WebSocket", "D3.js"],
-    githubUrl: "https://github.com/yourusername/project2",
-    demoUrl: "https://demo.example.com",
-    image: "/placeholder.svg"
-  },
-  "3": {
-    title: "API Gateway",
-    description: "Scalable API gateway with rate limiting, authentication, and monitoring",
-    longDescription: "A production-grade API gateway built from scratch to demonstrate deep understanding of distributed systems, security, and performance optimization. Implements advanced features like circuit breaking, rate limiting, and request routing.",
-    motivation: "Understanding API gateways is crucial for microservices architecture. This project showcases my ability to build critical infrastructure components that can handle production-level traffic.",
-    architecture: [
-      "Written in Go for high performance and low latency",
-      "Redis-based distributed rate limiting",
-      "JWT authentication with refresh token rotation",
-      "gRPC for backend communication with HTTP/REST frontend"
-    ],
-    components: [
-      { name: "Proxy Layer", description: "Request routing and load balancing" },
-      { name: "Auth Service", description: "JWT validation and user management" },
-      { name: "Rate Limiter", description: "Token bucket implementation with Redis" },
-      { name: "Metrics Collector", description: "Prometheus integration for observability" }
-    ],
-    setup: [
-      "Clone the repository: git clone https://github.com/yourusername/api-gateway",
-      "Install Go dependencies: go mod download",
-      "Start Redis: docker run -p 6379:6379 redis",
-      "Configure environment: cp .env.example .env",
-      "Build and run: go build && ./gateway",
-      "Run tests: go test ./..."
-    ],
-    technologies: ["Go", "Redis", "gRPC", "Prometheus", "Docker", "JWT", "OpenAPI"],
-    githubUrl: "https://github.com/yourusername/project3",
-    demoUrl: "https://demo.example.com",
-    image: "/placeholder.svg"
+    githubUrl: "https://github.com/Tobias-Johannesson/DUGET",
+    paperUrl: "https://ieeexplore.ieee.org/document/10825688",
+    image: "/duget_methodology_overview.png",
   }
+  // "2": {
+  //   title: "Real-time Analytics Dashboard",
+  //   description: "High-performance analytics platform processing millions of events per second",
+  //   longDescription: "A comprehensive analytics platform capable of processing and visualizing streaming data in real-time. Built to handle massive scale with sub-second latency, demonstrating expertise in stream processing, data engineering, and frontend performance optimization.",
+  //   motivation: "Modern applications generate massive amounts of event data. I built this to showcase how to build scalable analytics infrastructure that provides actionable insights without sacrificing performance.",
+  //   architecture: [
+  //     "Event ingestion pipeline using Apache Kafka",
+  //     "Stream processing with Apache Flink for real-time aggregations",
+  //     "Time-series database (TimescaleDB) for efficient storage",
+  //     "React-based dashboard with WebSocket for live updates"
+  //   ],
+  //   components: [
+  //     { name: "Event Collector", description: "High-throughput event ingestion API" },
+  //     { name: "Stream Processor", description: "Real-time aggregation and transformation" },
+  //     { name: "Query Engine", description: "Optimized analytical queries" },
+  //     { name: "Visualization Layer", description: "Interactive charts and dashboards" }
+  //   ],
+  //   setup: [
+  //     "Clone the repository: git clone https://github.com/yourusername/analytics-dashboard",
+  //     "Install dependencies: npm install && pip install -r requirements.txt",
+  //     "Start Kafka: docker-compose up kafka zookeeper",
+  //     "Start stream processor: python processor.py",
+  //     "Start web server: npm run dev",
+  //     "Access dashboard at http://localhost:3000"
+  //   ],
+  //   technologies: ["React", "TypeScript", "Apache Kafka", "Apache Flink", "PostgreSQL", "WebSocket", "D3.js"],
+  //   githubUrl: "https://github.com/yourusername/project2",
+  //   demoUrl: "https://demo.example.com",
+  //   image: "/placeholder.svg"
+  // },
+  // "3": {
+  //   title: "API Gateway",
+  //   description: "Scalable API gateway with rate limiting, authentication, and monitoring",
+  //   longDescription: "A production-grade API gateway built from scratch to demonstrate deep understanding of distributed systems, security, and performance optimization. Implements advanced features like circuit breaking, rate limiting, and request routing.",
+  //   motivation: "Understanding API gateways is crucial for microservices architecture. This project showcases my ability to build critical infrastructure components that can handle production-level traffic.",
+  //   architecture: [
+  //     "Written in Go for high performance and low latency",
+  //     "Redis-based distributed rate limiting",
+  //     "JWT authentication with refresh token rotation",
+  //     "gRPC for backend communication with HTTP/REST frontend"
+  //   ],
+  //   components: [
+  //     { name: "Proxy Layer", description: "Request routing and load balancing" },
+  //     { name: "Auth Service", description: "JWT validation and user management" },
+  //     { name: "Rate Limiter", description: "Token bucket implementation with Redis" },
+  //     { name: "Metrics Collector", description: "Prometheus integration for observability" }
+  //   ],
+  //   setup: [
+  //     "Clone the repository: git clone https://github.com/yourusername/api-gateway",
+  //     "Install Go dependencies: go mod download",
+  //     "Start Redis: docker run -p 6379:6379 redis",
+  //     "Configure environment: cp .env.example .env",
+  //     "Build and run: go build && ./gateway",
+  //     "Run tests: go test ./..."
+  //   ],
+  //   technologies: ["Go", "Redis", "gRPC", "Prometheus", "Docker", "JWT", "OpenAPI"],
+  //   githubUrl: "https://github.com/yourusername/project3",
+  //   demoUrl: "https://demo.example.com",
+  //   image: "/placeholder.svg"
+  // }
 };
 
 const ProjectDetail = () => {
@@ -134,7 +143,7 @@ const ProjectDetail = () => {
             <img
               src={project.image}
               alt={project.title}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain bg-background"
             />
           </div>
 
@@ -165,6 +174,14 @@ const ProjectDetail = () => {
                   <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
                     <ExternalLink className="mr-2 h-4 w-4" />
                     Live Demo
+                  </a>
+                </Button>
+              )}
+              {project.paperUrl && (
+                <Button variant="outline" asChild>
+                  <a href={project.paperUrl} target="_blank" rel="noopener noreferrer">
+                    <Newspaper className="mr-2 h-4 w-4" />
+                    View Paper
                   </a>
                 </Button>
               )}

@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, Code, Database, Cloud } from "lucide-react";
+import { ArrowRight, Newspaper, Code, Database, Cloud } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 
@@ -10,22 +10,22 @@ const Index = () => {
   const featuredProjects = [
     {
       id: "1",
-      title: "Distributed Task Scheduler",
-      description: "Fault-tolerant scheduling system with microservices architecture",
-      icon: Cloud,
+      title: "DUGET: Dynamic User Grouping & Evolution Tracking",
+      description: "Machine learning framework for tracking user clusters over time in public transit systems, basis for my master's thesis and published IEEE paper",
+      icon: Newspaper,
     },
-    {
-      id: "2",
-      title: "Real-time Analytics Dashboard",
-      description: "Processing millions of events per second with sub-second latency",
-      icon: Database,
-    },
-    {
-      id: "3",
-      title: "API Gateway",
-      description: "Production-grade gateway with advanced routing and security",
-      icon: Code,
-    },
+    // {
+    //   id: "2",
+    //   title: "Real-time Analytics Dashboard",
+    //   description: "Processing millions of events per second with sub-second latency",
+    //   icon: Database,
+    // },
+    // {
+    //   id: "3",
+    //   title: "API Gateway",
+    //   description: "Production-grade gateway with advanced routing and security",
+    //   icon: Code,
+    // },
   ];
 
   return (
@@ -114,12 +114,13 @@ const Index = () => {
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Let's Build Something Great</h2>
             <p className="text-lg text-muted-foreground mb-8">
-              I'm currently seeking new opportunities. If you're looking for a software engineer
-              who's passionate about building reliable, scalable systems, let's connect.
+            Backend-focused software engineer at AWS, building reliable, high-performance cloud and database systems. 
+            Experienced in distributed systems, microservices, and scalable infrastructure. 
+            Always open to connecting on challenging engineering problems.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>
-                <a href="mailto:your.email@example.com">Get In Touch</a>
+                <a href="mailto:Tobias_Johannesson@outlook.com">Get In Touch</a>
               </Button>
               <Button size="lg" variant="outline" onClick={() => navigate("/about")}>
                 Learn More About Me
