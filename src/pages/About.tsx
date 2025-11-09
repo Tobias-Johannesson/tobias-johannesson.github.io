@@ -23,20 +23,26 @@ const About = () => {
           <div className="mb-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">About Me</h1>
             <div className="prose prose-lg max-w-none">
-              <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-                I'm a software engineer at AWS with a strong track record of delivering high-impact projects in cloud infrastructure, distributed systems, and full-stack development. I specialize in building scalable, reliable systems that solve real-world problems efficiently.
-              </p>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-                Over my career, I have designed and optimized microservices architectures, implemented low-latency trading and data pipelines, and enhanced observability and automation across critical infrastructure. My work has reduced operational latency by up to 80%, saved hundreds of thousands of dollars monthly, and improved system reliability.
-              </p>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-                I have a strong foundation in cloud platforms (AWS, Azure), programming languages (Java, C++, Python, TypeScript), and frameworks (React, Spring Boot). I also have hands-on experience in DevOps, CI/CD pipelines, monitoring, and AI/ML workflows.
-              </p>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                I am passionate about tackling challenging technical problems, contributing to high-performing teams, and building systems that scale globally. My goal is to continue driving impact through engineering excellence and innovative solutions.
-              </p>
+            <p className="text-lg text-muted-foreground leading-relaxed mb-4">
+              I'm <strong>Tobias Johannesson</strong>, a backend engineer at AWS originally from Stockholm, Sweden. I focus on designing and building distributed systems at scale, delivering reliable, high-performance infrastructure for production-grade environments.
+            </p>
+            <p className="text-lg text-muted-foreground leading-relaxed mb-4">
+              Over my career, I've engineered large-scale microservices architectures, optimized low-latency data pipelines, and driven major improvements in system observability and automation. My work has reduced operational latency by up to 80%, saved hundreds of thousands of dollars monthly, and increased overall reliability in critical infrastructure.
+            </p>
+            <p className="text-lg text-muted-foreground leading-relaxed mb-4">
+              I have a strong foundation in cloud computing (AWS, Azure), programming languages (Java, C++, Python, TypeScript), and frameworks (React, Spring Boot). I also bring hands-on experience in DevOps, CI/CD automation, distributed systems, and AI/ML integration.
+            </p>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              I'm passionate about solving complex distributed systems challenges, collaborating with high-performing teams, and building robust systems that scale globally. My goal is to continue pushing technical boundaries and driving measurable impact through engineering excellence.
+            </p>
+
               <Button asChild size="lg">
-                <a href="/resume.pdf" download>
+                <a
+                  href={`${import.meta.env.BASE_URL}Tobias_Johannesson_Resume.pdf`}
+                  download
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Download className="mr-2 h-4 w-4" />
                   Download Resume
                 </a>
