@@ -63,7 +63,7 @@ const projectDetails: Record<string, any> = {
   //     { name: "Visualization Layer", description: "Interactive charts and dashboards" }
   //   ],
   //   setup: [
-  //     "Clone the repository: git clone https://github.com/yourusername/analytics-dashboard",
+  //     "Clone the repository: git clone https://github.com/Tobias-Johannesson/analytics-dashboard",
   //     "Install dependencies: npm install && pip install -r requirements.txt",
   //     "Start Kafka: docker-compose up kafka zookeeper",
   //     "Start stream processor: python processor.py",
@@ -71,7 +71,7 @@ const projectDetails: Record<string, any> = {
   //     "Access dashboard at http://localhost:3000"
   //   ],
   //   technologies: ["React", "TypeScript", "Apache Kafka", "Apache Flink", "PostgreSQL", "WebSocket", "D3.js"],
-  //   githubUrl: "https://github.com/yourusername/project2",
+  //   githubUrl: "https://github.com/Tobias-Johannesson/project2",
   //   demoUrl: "https://demo.example.com",
   //   image: "/placeholder.svg"
   // },
@@ -93,7 +93,7 @@ const projectDetails: Record<string, any> = {
   //     { name: "Metrics Collector", description: "Prometheus integration for observability" }
   //   ],
   //   setup: [
-  //     "Clone the repository: git clone https://github.com/yourusername/api-gateway",
+  //     "Clone the repository: git clone https://github.com/Tobias-Johannesson/api-gateway",
   //     "Install Go dependencies: go mod download",
   //     "Start Redis: docker run -p 6379:6379 redis",
   //     "Configure environment: cp .env.example .env",
@@ -101,7 +101,7 @@ const projectDetails: Record<string, any> = {
   //     "Run tests: go test ./..."
   //   ],
   //   technologies: ["Go", "Redis", "gRPC", "Prometheus", "Docker", "JWT", "OpenAPI"],
-  //   githubUrl: "https://github.com/yourusername/project3",
+  //   githubUrl: "https://github.com/Tobias-Johannesson/project3",
   //   demoUrl: "https://demo.example.com",
   //   image: "/placeholder.svg"
   // }

@@ -26,7 +26,7 @@ DUGET_V1 and DUGET_V2 implement this on public transportation data, showing robu
   //   description: "High-performance analytics platform processing millions of events per second",
   //   tags: ["React", "TypeScript", "Apache Kafka", "PostgreSQL"],
   //   image: "/placeholder.svg",
-  //   githubUrl: "https://github.com/yourusername/project2",
+  //   githubUrl: "https://github.com/Tobias-Johannesson/project2",
   // },
   // {
   //   id: "3",
@@ -34,7 +34,7 @@ DUGET_V1 and DUGET_V2 implement this on public transportation data, showing robu
   //   description: "Scalable API gateway with rate limiting, authentication, and monitoring",
   //   tags: ["Go", "Redis", "gRPC", "Prometheus"],
   //   image: "/placeholder.svg",
-  //   githubUrl: "https://github.com/yourusername/project3",
+  //   githubUrl: "https://github.com/Tobias-Johannesson/project3",
   // },
 ];
 
