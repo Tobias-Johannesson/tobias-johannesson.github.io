@@ -1,60 +1,137 @@
-# Welcome to your Portfolio Project
+# Welcome to Your Portfolio Project
 
-## Project info
+## Project Info
 
-**URL**: https://tobias-johannesson.github.io/
+**Live Site:** [https://tobias-johannesson.github.io/](https://tobias-johannesson.github.io/)  
+**Repository:** [https://github.com/Tobias-Johannesson/tobias-johannesson.github.io](https://github.com/Tobias-Johannesson/tobias-johannesson.github.io)
 
-## How can I edit this code?
+This is a personal **portfolio website** built with **React**, **TypeScript**, **Vite**, **TailwindCSS**, and **shadcn-ui**.  
+It’s deployed using **GitHub Pages** through the **gh-pages** package.
 
-### Use your preferred IDE
+---
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Local Development
 
-The only requirement is having Node.js & npm installed. On macOS, you can install Node via Homebrew:
+### Install Node.js
+If you don’t already have Node.js installed, install it via **Homebrew** on macOS:
 
-```sh
-# Install Homebrew if you haven't already
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```bash
+# Install Homebrew (if you don't have it)
+ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-# Install Node
+# Install Node.js
 brew install node
 ```
 
-Once Node is installed, follow these steps:
+---
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Set Up the Project
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+```bash
+# 1️. Clone the repository
+git clone https://github.com/Tobias-Johannesson/tobias-johannesson.github.io.git
 
-# Step 3: Install the necessary dependencies.
+# 2️. Navigate into the project directory
+cd tobias-johannesson.github.io
+
+# 3️. Install dependencies
 npm install
 
-# Step 4: Build the project for production.
-npm run build
-
-# Step 5: Navigate into the built files.
-cd dist
-
-# Step 6: Run a simple local server using Python.
-# For Python 3:
-python3 -m http.server 8080
-# Open http://localhost:8080 in your browser
+# 4️. Run the project in development mode
+npm run dev
 ```
 
-## What technologies are used for this project?
+This will start a local development server (usually at [http://localhost:8080](http://localhost:8080)).
 
-This project is built with:
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+---
 
-## How can I deploy this project?
+### Build and Preview Locally
 
-You can deploy by pushing to GitHub Pages:
-- The dist folder contains the production build.
-- Simply push your dist folder to the gh-pages branch or configure GitHub Pages to serve from main → /dist.
+To test your production build locally:
+
+```bash
+# 1️. Build the production version
+npm run build
+
+# 2️. Navigate to the build output folder
+cd dist
+
+# 3️. Serve the static files with Python
+python3 -m http.server 8080
+```
+
+Then open [http://localhost:8080](http://localhost:8080) in your browser.
+
+---
+
+## 🚀 Deployment to GitHub Pages
+
+### 1️. Configure Vite
+
+In your **vite.config.ts**, make sure the base path is `/`:
+
+```ts
+export default defineConfig({
+  plugins: [react()],
+  base: "/",
+});
+```
+
+---
+
+### 2️. Update `package.json`
+
+Add the following fields to the root of your `package.json`:
+
+```json
+"homepage": "https://<your-username>.github.io/<your-repo-name>/",
+"scripts": {
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d dist"
+}
+```
+
+Then install the deployment dependency:
+
+```bash
+npm install gh-pages --save-dev
+```
+
+---
+
+### 3️. Deploy to GitHub Pages
+
+Deploy your portfolio with a single command:
+
+```bash
+npm run deploy
+```
+
+This builds your app and pushes the contents of the `dist/` folder to a new branch called `gh-pages`, which GitHub Pages serves automatically.
+
+---
+
+### 4️. Configure GitHub Pages
+
+1. Go to your repo’s **Settings → Pages**  
+2. Under **Branch**, select `gh-pages`  
+3. Set the directory to `/ (root)`  
+4. Click **Save**
+
+Your portfolio should now be live at:  
+👉 [https://tobias-johannesson.github.io/](https://tobias-johannesson.github.io/)
+
+---
+
+## ⚙️ Technologies Used
+
+- **React**
+- **TypeScript**
+- **Vite**
+- **Tailwind CSS**
+- **shadcn-ui**
+- **gh-pages** (for deployment)
+
+---
+
+ _Developed and maintained by Tobias Johannesson._
