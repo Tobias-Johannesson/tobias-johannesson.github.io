@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, Newspaper, Code, Database, Cloud } from "lucide-react";
+import { ArrowRight, Newspaper, Workflow, Link, Code, Database, Cloud } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 
@@ -14,14 +14,26 @@ const Index = () => {
       description: "Machine learning framework for tracking user clusters over time in public transit systems, basis for my master's thesis and published IEEE paper",
       icon: Newspaper,
     },
+    {
+      id: "2",
+      title: "[IN PROGRESS] Asynchronous Work Scheduler",
+      description: "A backend-first Java system focused on designing and implementing a high-throughput asynchronous work scheduling engine",
+      icon: Workflow,
+    },
+    {
+      id: "3",
+      title: "BitLink: High-Performance URL Shortener",
+      description: "BitLink is a backend URL shortener service written in C++ with a strong focus on performance and scalability",
+      icon: Link,
+    },
     // {
-    //   id: "2",
+    //   id: "4",
     //   title: "Real-time Analytics Dashboard",
     //   description: "Processing millions of events per second with sub-second latency",
     //   icon: Database,
     // },
     // {
-    //   id: "3",
+    //   id: "5",
     //   title: "API Gateway",
     //   description: "Production-grade gateway with advanced routing and security",
     //   icon: Code,

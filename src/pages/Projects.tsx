@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, Newspaper } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import { useNavigate } from "react-router-dom";
 
@@ -20,8 +20,30 @@ DUGET_V1 and DUGET_V2 implement this on public transportation data, showing robu
     githubUrl: "https://github.com/Tobias-Johannesson/DUGET",
     paperUrl: "https://ieeexplore.ieee.org/document/10825688",
   },
+  {
+    id: "2",
+    title: "[IN PROGRESS] Asynchronous Work Scheduler",
+    description: `A backend-first Java system focused on designing and implementing a high-throughput asynchronous work scheduling engine.
+
+The goal is to build a production-grade scheduler focusing less on storage-heavy request paths and more on concurrency control, async execution models, and system reliability under load.`,
+    tags: ["Java", "Distributed Systems", "Asynchronous Processing", "Concurrency", "Backend Architecture"],
+    image: "/async-scheduler-in-progress.png",
+    githubUrl: "",
+  },
+  {
+    id: "3",
+    title: "BitLink: High-Performance URL Shortener",
+    description: `BitLink is a backend URL shortener service written in C++ with a strong focus on performance, scalability, and systems-level trade-offs.
+
+The system is designed for high read and write throughput and uses a two-layer storage architecture to balance latency, durability, and cost. It explores key backend concerns such as request routing, caching strategies, rate limiting, and failure handling under load.
+
+This project serves as a hands-on exercise in building low-latency services, reasoning about storage and memory trade-offs, and implementing performance-critical backend infrastructure from first principles.`,
+    tags: ["C++", "Backend Systems", "High Performance", "Caching", "Storage"],
+    image: "/bitlink_high_level_system_design.png",
+    githubUrl: "https://github.com/Tobias-Johannesson/bitlink",
+  }
   // {
-  //   id: "2",
+  //   id: "4",
   //   title: "Real-time Analytics Dashboard",
   //   description: "High-performance analytics platform processing millions of events per second",
   //   tags: ["React", "TypeScript", "Apache Kafka", "PostgreSQL"],
@@ -29,7 +51,7 @@ DUGET_V1 and DUGET_V2 implement this on public transportation data, showing robu
   //   githubUrl: "https://github.com/Tobias-Johannesson/project2",
   // },
   // {
-  //   id: "3",
+  //   id: "5",
   //   title: "API Gateway",
   //   description: "Scalable API gateway with rate limiting, authentication, and monitoring",
   //   tags: ["Go", "Redis", "gRPC", "Prometheus"],
