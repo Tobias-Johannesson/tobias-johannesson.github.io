@@ -4,7 +4,6 @@ import { ExternalLink, Github } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import { useNavigate } from "react-router-dom";
 
-// Sample project data - replace with your actual projects
 const projects = [
   {
     id: "1",
@@ -19,6 +18,7 @@ DUGET_V1 and DUGET_V2 implement this on public transportation data, showing robu
     tags: ["Machine Learning", "Python", "Data Science", "Public Transit", "Clustering", "Temporal Analysis"],
     image: "/duget_methodology_overview.png",
     githubUrl: "https://github.com/Tobias-Johannesson/DUGET",
+    paperUrl: "https://ieeexplore.ieee.org/document/10825688",
   },
   // {
   //   id: "2",
@@ -98,6 +98,20 @@ const Projects = () => {
                       <Github className="h-4 w-4" />
                       Code
                     </Button>
+                    {project.paperUrl && (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          window.open(project.paperUrl, "_blank", "noopener,noreferrer");
+                        }}
+                        className="flex items-center gap-2"
+                      >
+                        <Newspaper className="mr-2 h-4 w-4" />
+                        Paper
+                      </Button>
+                    )}
                     <Button
                       variant="outline"
                       size="sm"

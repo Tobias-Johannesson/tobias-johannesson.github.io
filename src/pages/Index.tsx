@@ -37,12 +37,11 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/5" />
         <div className="container mx-auto px-4 relative">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-in fade-in slide-in-from-bottom-4 duration-1000">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 pb-[5px] bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-in fade-in slide-in-from-bottom-4 duration-1000">
               Software Engineer
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground mb-8 animate-in fade-in slide-in-from-bottom-5 duration-1000 delay-150">
-              Building scalable, reliable systems at AWS. Passionate about distributed systems,
-              cloud infrastructure, and elegant code.
+              Building scalable, low-latency backend systems at AWS. Focused on distributed systems, cloud infrastructure, and reliability under real-world load.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-300">
               <Button size="lg" onClick={() => navigate("/projects")} className="group">
