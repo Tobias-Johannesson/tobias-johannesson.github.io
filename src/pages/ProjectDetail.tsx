@@ -4,6 +4,25 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, Github, ExternalLink, Newspaper } from "lucide-react";
 import Navigation from "@/components/Navigation";
 
+// Helper function to parse simple markdown to HTML
+const parseMarkdown = (text: string): string => {
+  return text
+    .trim()
+    // Bold text
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    // Links
+    .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-4 hover:text-primary/80">$1</a>')
+    // Convert - lists to •
+    .replace(/^- /gm, '• ')
+    // Double newlines become paragraph breaks
+    .replace(/\n\n/g, '</p><p class="mt-4">')
+    // Single newline before bullet becomes new line with bullet
+    .replace(/\n• /g, '</p><p class="mt-2">• ')
+    // Wrap in paragraphs
+    .replace(/^/, '<p>')
+    .replace(/$/, '</p>');
+};
+
 const projectDetails: Record<string, any> = {
   "1": {
     title: "DUGET: Dynamic User Grouping & Evolution Tracking",
@@ -45,22 +64,90 @@ const projectDetails: Record<string, any> = {
     image: "/duget_methodology_overview.png",
   },
   "2": {
+    title: "Mimir: Write Your Story, Map Your World, Own Your Data",
+    description: "An AI-powered writing tool that runs completely on your computer",
+    isBlogStyle: true,
+    youtubeVideoId: "TTz-LGa5uZo",
+    websiteUrl: "https://mimir-editor.com",
+    image: "https://img.youtube.com/vi/TTz-LGa5uZo/maxresdefault.jpg",
+    technologies: [
+      "Electron",
+      "React",
+      "TypeScript",
+      "Python",
+      "Sentence Transformers",
+      "Qdrant",
+      "llama.cpp",
+      "Local AI"
+    ],
+    blogSections: [
+      {
+        content: `My friends and I have been working on something that combines two things we care about: writing and privacy. It's called Mimir, and it's an AI-powered writing tool that runs completely on your computer.
+
+**Want to try it?** Visit [mimir-editor.com](https://mimir-editor.com) to join the waitlist and get updates on the beta release.`
+      },
+      {
+        title: "The Problem",
+        content: `Most modern writing tools make you choose:
+
+• **Traditional tools (Word, Scrivener):** Private, but no AI help
+• **Cloud AI tools (Sudowrite, NovelAI):** Powerful AI, but your manuscript lives on their servers
+
+We wanted both. AI assistance for story development without sending our work to the cloud.`
+      },
+      {
+        title: "What Mimir Does",
+        content: `Mimir is a desktop app with two main modes:
+
+**Editor Mode**
+
+A clean writing interface where you work on your manuscript. Import Word documents, organize chapters, and write in a distraction-free environment.
+
+**Creator Mode**
+
+This is where it gets interesting. As you write, Mimir helps you visualize your story through different views:
+
+• **Canvas:** Visual map of characters, locations, and relationships
+• **Timeline:** See events chronologically
+• **Structured View:** Organized lists of story elements
+• **Outline:** Hierarchical story structure
+
+The idea is simple: write naturally, and see your story world emerge visually.`
+      },
+      {
+        title: "The Privacy-First Approach",
+        content: `Here's what makes Mimir different: it uses a tiny local AI that runs on your machine.
+
+The system has two parts:
+
+• **Mimir Editor** (Electron + React + TypeScript) - The desktop app you interact with
+• **Mimir Embedder** (Python backend) - The AI engine that processes your text locally
+
+The embedder uses:
+
+• **Sentence Transformers** for understanding your text semantically
+• **Qdrant** (embedded vector database) for storing story elements
+• **Local LLM** (Phi-3.5 via llama.cpp) for text generation and extraction (teeny tiny model that runs on your CPU)
+
+Everything runs on your computer. Your manuscript never touches the cloud.`
+      }
+    ]
+  },
+  "3": {
     title: "[IN PROGRESS] Asynchronous Work Scheduler",
     description: "A backend-first Java system focused on designing and implementing a high-throughput asynchronous work scheduling engine",
-    longDescription: `
-This project is a backend-focused asynchronous work scheduling system inspired by production-grade job queues and messaging platforms such as SQS, Kafka, and internal big-tech schedulers.
+    longDescription: `This project is a backend-focused asynchronous work scheduling system inspired by production-grade job queues and messaging platforms such as SQS, Kafka, and internal big-tech schedulers.
 
 The system is planned to accept, persist, schedule, and execute asynchronous jobs at scale, with strong guarantees around durability, ordering, retries, and fault tolerance. The emphasis is on explicit system design, clear trade-offs, and correctness under failure rather than framework-driven abstractions.`,
-    motivation: `
-Modern backend systems rely heavily on asynchronous execution to decouple services, smooth traffic spikes, and improve system resilience. While many developers consume job queues as managed services, fewer understand the internal mechanics that make these systems reliable at scale.
+    motivation: `Modern backend systems rely heavily on asynchronous execution to decouple services, smooth traffic spikes, and improve system resilience. While many developers consume job queues as managed services, fewer understand the internal mechanics that make these systems reliable at scale.
 
 This project exists to:
+
 - Go deep on asynchronous systems design in Java
 - Explore trade-offs between pull vs push scheduling models
 - Understand durability, retries, and idempotency guarantees
 - Build intuition for throughput, latency, and backpressure
-- Focus on coordination and async execution rather than request/response performance
-`,
+- Focus on coordination and async execution rather than request/response performance`,
     technologies: [
       "Java",
       "Spring",
@@ -68,16 +155,15 @@ This project exists to:
       "Asynchronous Processing",
       "Durable Queues",
     ],
-    githubUrl: "https://github.com/Tobias-Johannesson",
+    githubUrl: "https://github.com/Tobias-Johannesson/Dispatch",
     image: "/async-scheduler-in-progress.png",
   },
-  "3": {
+  "4": {
     title: "BitLink: High-Performance URL Shortener",
     description: "BitLink is a backend URL shortener service written in C++ with a strong focus on performance, scalability, and systems-level trade-offs",
     longDescription: `BitLink is a high-performance, backend-focused URL shortener designed to explore real-world systems engineering trade-offs around latency, throughput, durability, and simplicity.
 
-The service is optimized for read-heavy workloads while still supporting high write throughput. It implements a layered storage architecture combining an in-memory cache with a persistent datastore to balance speed and correctness. The system is designed to minimize tail latency on redirects while maintaining predictable performance under load.
-`,
+The service is optimized for read-heavy workloads while still supporting high write throughput. It implements a layered storage architecture combining an in-memory cache with a persistent datastore to balance speed and correctness. The system is designed to minimize tail latency on redirects while maintaining predictable performance under load.`,
     motivation: "Most URL shortener examples focus on basic CRUD functionality and ignore the systems-level concerns that dominate real production services. The goal was to create a small but serious system that reflects how production backend services are actually designed, measured, and evolved.",
     architecture: [
       "Client → HTTP API layer",
@@ -111,67 +197,7 @@ The service is optimized for read-heavy workloads while still supporting high wr
     ],
     githubUrl: "https://github.com/Tobias-Johannesson/bitlink",
     image: "/bitlink_high_level_system_design.png",
-  }
-  // "4": {
-  //   title: "Real-time Analytics Dashboard",
-  //   description: "High-performance analytics platform processing millions of events per second",
-  //   longDescription: "A comprehensive analytics platform capable of processing and visualizing streaming data in real-time. Built to handle massive scale with sub-second latency, demonstrating expertise in stream processing, data engineering, and frontend performance optimization.",
-  //   motivation: "Modern applications generate massive amounts of event data. I built this to showcase how to build scalable analytics infrastructure that provides actionable insights without sacrificing performance.",
-  //   architecture: [
-  //     "Event ingestion pipeline using Apache Kafka",
-  //     "Stream processing with Apache Flink for real-time aggregations",
-  //     "Time-series database (TimescaleDB) for efficient storage",
-  //     "React-based dashboard with WebSocket for live updates"
-  //   ],
-  //   components: [
-  //     { name: "Event Collector", description: "High-throughput event ingestion API" },
-  //     { name: "Stream Processor", description: "Real-time aggregation and transformation" },
-  //     { name: "Query Engine", description: "Optimized analytical queries" },
-  //     { name: "Visualization Layer", description: "Interactive charts and dashboards" }
-  //   ],
-  //   setup: [
-  //     "Clone the repository: git clone https://github.com/Tobias-Johannesson/analytics-dashboard",
-  //     "Install dependencies: npm install && pip install -r requirements.txt",
-  //     "Start Kafka: docker-compose up kafka zookeeper",
-  //     "Start stream processor: python processor.py",
-  //     "Start web server: npm run dev",
-  //     "Access dashboard at http://localhost:3000"
-  //   ],
-  //   technologies: ["React", "TypeScript", "Apache Kafka", "Apache Flink", "PostgreSQL", "WebSocket", "D3.js"],
-  //   githubUrl: "https://github.com/Tobias-Johannesson/project2",
-  //   demoUrl: "https://demo.example.com",
-  //   image: "/placeholder.svg"
-  // },
-  // "5": {
-  //   title: "API Gateway",
-  //   description: "Scalable API gateway with rate limiting, authentication, and monitoring",
-  //   longDescription: "A production-grade API gateway built from scratch to demonstrate deep understanding of distributed systems, security, and performance optimization. Implements advanced features like circuit breaking, rate limiting, and request routing.",
-  //   motivation: "Understanding API gateways is crucial for microservices architecture. This project showcases my ability to build critical infrastructure components that can handle production-level traffic.",
-  //   architecture: [
-  //     "Written in Go for high performance and low latency",
-  //     "Redis-based distributed rate limiting",
-  //     "JWT authentication with refresh token rotation",
-  //     "gRPC for backend communication with HTTP/REST frontend"
-  //   ],
-  //   components: [
-  //     { name: "Proxy Layer", description: "Request routing and load balancing" },
-  //     { name: "Auth Service", description: "JWT validation and user management" },
-  //     { name: "Rate Limiter", description: "Token bucket implementation with Redis" },
-  //     { name: "Metrics Collector", description: "Prometheus integration for observability" }
-  //   ],
-  //   setup: [
-  //     "Clone the repository: git clone https://github.com/Tobias-Johannesson/api-gateway",
-  //     "Install Go dependencies: go mod download",
-  //     "Start Redis: docker run -p 6379:6379 redis",
-  //     "Configure environment: cp .env.example .env",
-  //     "Build and run: go build && ./gateway",
-  //     "Run tests: go test ./..."
-  //   ],
-  //   technologies: ["Go", "Redis", "gRPC", "Prometheus", "Docker", "JWT", "OpenAPI"],
-  //   githubUrl: "https://github.com/Tobias-Johannesson/project3",
-  //   demoUrl: "https://demo.example.com",
-  //   image: "/placeholder.svg"
-  // }
+  },
 };
 
 const ProjectDetail = () => {
@@ -206,18 +232,20 @@ const ProjectDetail = () => {
             Back to Projects
           </Button>
 
-          <div className="aspect-video bg-muted rounded-lg mb-8 overflow-hidden">
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-full object-contain bg-background"
-            />
-          </div>
+          {!project.isBlogStyle && (
+            <div className="aspect-video bg-muted rounded-lg mb-8 overflow-hidden">
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-full object-contain bg-background"
+              />
+            </div>
+          )}
 
           <div className="mb-8">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">{project.title}</h1>
             <p className="text-xl text-muted-foreground mb-6">{project.description}</p>
-            
+
             <div className="flex flex-wrap gap-2 mb-6">
               {project.technologies.map((tech: string) => (
                 <span
@@ -230,12 +258,22 @@ const ProjectDetail = () => {
             </div>
 
             <div className="flex gap-3">
-              <Button asChild>
-                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                  <Github className="mr-2 h-4 w-4" />
-                  View Source
-                </a>
-              </Button>
+              {project.githubUrl && (
+                <Button asChild>
+                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                    <Github className="mr-2 h-4 w-4" />
+                    View Source
+                  </a>
+                </Button>
+              )}
+              {project.websiteUrl && (
+                <Button asChild>
+                  <a href={project.websiteUrl} target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="mr-2 h-4 w-4" />
+                    Visit Website
+                  </a>
+                </Button>
+              )}
               {project.demoUrl && (
                 <Button variant="outline" asChild>
                   <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
@@ -255,50 +293,105 @@ const ProjectDetail = () => {
             </div>
           </div>
 
-          <Card className="mb-8">
-            <CardContent className="pt-6">
-              <h2 className="text-2xl font-bold mb-3">Overview</h2>
-              <p className="text-muted-foreground leading-relaxed">{project.longDescription}</p>
-            </CardContent>
-          </Card>
-
-          <Card className="mb-8">
-            <CardContent className="pt-6">
-              <h2 className="text-2xl font-bold mb-3">Motivation</h2>
-              <p className="text-muted-foreground leading-relaxed">{project.motivation}</p>
-            </CardContent>
-          </Card>
-          
-          {project.architecture && (
-            <Card className="mb-8">
-              <CardContent className="pt-6">
-                <h2 className="text-2xl font-bold mb-4">Architecture & Design</h2>
-                <ul className="space-y-2">
-                  {project.architecture.map((item: string, index: number) => (
-                    <li key={index} className="flex items-start">
-                      <span className="text-primary mr-2">•</span>
-                      <span className="text-muted-foreground">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
+          {/* Blog-style content */}
+          {project.isBlogStyle && project.blogSections && (
+            <>
+              {project.blogSections.map((section: any, index: number) => (
+                <Card key={index} className="mb-8">
+                  <CardContent className="pt-6">
+                    {section.title && (
+                      <h2 className="text-2xl font-bold mb-4">{section.title}</h2>
+                    )}
+                    <div
+                      className="text-muted-foreground leading-relaxed [&_strong]:text-foreground [&_strong]:font-semibold"
+                      dangerouslySetInnerHTML={{ __html: parseMarkdown(section.content) }}
+                    />
+                    {/* YouTube video after first section */}
+                    {index === 1 && project.youtubeVideoId && (
+                      <div className="mt-8">
+                        <h3 className="text-xl font-semibold mb-4">See Mimir in Action</h3>
+                        <p className="text-muted-foreground mb-4">
+                          Watch how Mimir works—from writing your manuscript to seeing your story world visualized automatically:
+                        </p>
+                        <div className="aspect-video rounded-lg overflow-hidden">
+                          <iframe
+                            width="100%"
+                            height="100%"
+                            src={`https://www.youtube.com/embed/${project.youtubeVideoId}`}
+                            title="YouTube video player"
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowFullScreen
+                            className="w-full h-full"
+                          />
+                        </div>
+                      </div>
+                    )}
+                  </CardContent>
+                </Card>
+              ))}
+            </>
           )}
 
-          {project.components && (
-            <Card className="mb-8">
-              <CardContent className="pt-6">
-                <h2 className="text-2xl font-bold mb-4">Key Components</h2>
-                <div className="space-y-4">
-                  {project.components.map((component: any, index: number) => (
-                    <div key={index}>
-                      <h3 className="font-semibold text-lg mb-1">{component.name}</h3>
-                      <p className="text-muted-foreground">{component.description}</p>
+          {/* Standard project content */}
+          {!project.isBlogStyle && (
+            <>
+              {project.longDescription && (
+                <Card className="mb-8">
+                  <CardContent className="pt-6">
+                    <h2 className="text-2xl font-bold mb-3">Overview</h2>
+                    <div
+                      className="text-muted-foreground leading-relaxed [&_strong]:text-foreground [&_strong]:font-semibold"
+                      dangerouslySetInnerHTML={{ __html: parseMarkdown(project.longDescription) }}
+                    />
+                  </CardContent>
+                </Card>
+              )}
+
+              {project.motivation && (
+                <Card className="mb-8">
+                  <CardContent className="pt-6">
+                    <h2 className="text-2xl font-bold mb-3">Motivation</h2>
+                    <div
+                      className="text-muted-foreground leading-relaxed [&_strong]:text-foreground [&_strong]:font-semibold"
+                      dangerouslySetInnerHTML={{ __html: parseMarkdown(project.motivation) }}
+                    />
+                  </CardContent>
+                </Card>
+              )}
+
+              {project.architecture && (
+                <Card className="mb-8">
+                  <CardContent className="pt-6">
+                    <h2 className="text-2xl font-bold mb-4">Architecture & Design</h2>
+                    <ul className="space-y-2">
+                      {project.architecture.map((item: string, index: number) => (
+                        <li key={index} className="flex items-start">
+                          <span className="text-primary mr-2">•</span>
+                          <span className="text-muted-foreground">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              )}
+
+              {project.components && (
+                <Card className="mb-8">
+                  <CardContent className="pt-6">
+                    <h2 className="text-2xl font-bold mb-4">Key Components</h2>
+                    <div className="space-y-4">
+                      {project.components.map((component: any, index: number) => (
+                        <div key={index}>
+                          <h3 className="font-semibold text-lg mb-1">{component.name}</h3>
+                          <p className="text-muted-foreground">{component.description}</p>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+                  </CardContent>
+                </Card>
+              )}
+            </>
           )}
 
           {project.setup && (

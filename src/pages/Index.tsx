@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, Newspaper, Workflow, Link, Code, Database, Cloud } from "lucide-react";
+import { ArrowRight, Newspaper, Workflow, BookOpen } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 
@@ -16,27 +16,21 @@ const Index = () => {
     },
     {
       id: "2",
+      title: "Mimir: Write Your Story, Map Your World, Own Your Data",
+      description: `My friends and I have been working on something that combines two things we care about: writing and privacy. It's called Mimir, and it's an AI-powered writing tool that runs completely on your computer.`,
+      icon: BookOpen,
+    },
+    {
+      id: "3",
       title: "[IN PROGRESS] Asynchronous Work Scheduler",
       description: "A backend-first Java system focused on designing and implementing a high-throughput asynchronous work scheduling engine",
       icon: Workflow,
     },
-    {
-      id: "3",
-      title: "BitLink: High-Performance URL Shortener",
-      description: "BitLink is a backend URL shortener service written in C++ with a strong focus on performance and scalability",
-      icon: Link,
-    },
     // {
-    //   id: "4",
-    //   title: "Real-time Analytics Dashboard",
-    //   description: "Processing millions of events per second with sub-second latency",
-    //   icon: Database,
-    // },
-    // {
-    //   id: "5",
-    //   title: "API Gateway",
-    //   description: "Production-grade gateway with advanced routing and security",
-    //   icon: Code,
+    //   id: "3",
+    //   title: "BitLink: High-Performance URL Shortener",
+    //   description: "BitLink is a backend URL shortener service written in C++ with a strong focus on performance and scalability",
+    //   icon: Link,
     // },
   ];
 
